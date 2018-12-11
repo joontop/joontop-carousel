@@ -43,6 +43,7 @@ start();
 ```
 
 ## Sample URL
+https://joontop.github.io/joontop-carousel/sample/
 
 ## License
 

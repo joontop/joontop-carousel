@@ -99,7 +99,7 @@ export default class Carousel {
           this.setIdx();
           this.setCarouselData();
           this.setDataTransition();
-          this.emitter.emit(CONFIG.EMITTER_NAME.PAGINATE, this.value.idx.current);
+          // this.emitter.emit(CONFIG.EMITTER_NAME.PAGINATE, this.value.idx.current);
         }
       }.bind(this)
     );
@@ -197,6 +197,7 @@ export default class Carousel {
         ? 0
         : this.value.idx.current + 1;
     this.setPaging();
+    this.emitter.emit(CONFIG.EMITTER_NAME.PAGINATE, this.value.idx.current + 1);
   }
   setPaging() {
     if (Options.getIsPaginate() && this.paginateDataArray.length > 0) {
@@ -260,7 +261,7 @@ export default class Carousel {
       }.bind(this),
       Options.getTransitionSeconds() * 1000
     );
-    this.emitter.emit(CONFIG.EMITTER_NAME.PREV, this.value.idx.current);
+    this.emitter.emit(CONFIG.EMITTER_NAME.PREV, 'prev');
   }
   next() {
     util.setTransformPrefix(this.carouselElement, '-100%');
@@ -293,7 +294,7 @@ export default class Carousel {
       }.bind(this),
       Options.getTransitionSeconds() * 1000
     );
-    this.emitter.emit(CONFIG.EMITTER_NAME.NEXT, this.value.idx.current);
+    this.emitter.emit(CONFIG.EMITTER_NAME.NEXT, 'next');
   }
   onStartEvent(e) {
     if (!this.state.isOnTouching) {
